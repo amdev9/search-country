@@ -3,7 +3,7 @@ import { useEffect, useContext }  from "react"
 import { store } from '../state/store.js';
 
 const useFetch = url => {
-  const { state, dispatch } = useContext(store);
+  const { dispatch } = useContext(store);
   
   useEffect(() => {
     dispatch({ type: 'LOADING' });

@@ -1,5 +1,4 @@
 import React, { createContext, useReducer } from "react";
-import { isCompositeComponent } from "react-dom/test-utils";
 import { reducer, initialState } from "./reducer";
 
 const store = createContext(initialState);

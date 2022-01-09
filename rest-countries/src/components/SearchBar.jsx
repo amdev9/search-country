@@ -1,5 +1,5 @@
 
-import React, { useCallback, useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useState } from "react";
 import { store } from '../state/store.js';
 import { actionSearch } from '../state/actions';
 

@@ -5,7 +5,7 @@ const Item = (props) => {
   const { item } = props;
 
   return (
-    <Link to={`/countries/${item.numericCode}`}>
+    <Link to={`/countries/${item.alpha3Code}`}>
       <h1>{item.name}</h1>
     </Link>
   );
