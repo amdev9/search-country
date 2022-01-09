@@ -2,21 +2,21 @@ import React from "react";
 import List from "./List";
 import SearchBar from "./SearchBar";
 import RegionFilter from "./RegionFilter";
-import ThemeSwitch from "./ThemeSwitch";
 import useFetch from "../common/useFetch";
-
+import Layout from "./Layout";
+import styles from "./Countries.module.scss";
 const Countries = () => {
-  useFetch(
-    "https://restcountries.com/v2/all"
-  );
+  useFetch("https://restcountries.com/v2/all");
 
   return (
-    <>
-      <SearchBar />
-      <RegionFilter />
-      <ThemeSwitch />
+    <Layout>
+      <div className={styles.filter}>
+        <SearchBar />
+        <RegionFilter />
+      </div>
+
       <List />
-    </>
+    </Layout>
   );
 };
 

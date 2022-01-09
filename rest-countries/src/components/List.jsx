@@ -1,7 +1,7 @@
 import React, { useContext, useMemo } from "react";
 import Item from "./Item";
-
 import { store } from "../state/store";
+import styles from "./List.module.scss";
 
 function CountiesList() {
   const { state } = useContext(store);
@@ -12,28 +12,26 @@ function CountiesList() {
     [filtered, searched]
   );
 
-  let renderCountries = []
+  let renderCountries = [];
   if (searched.length && filtered.length) {
-    renderCountries = countryUnion
+    renderCountries = countryUnion;
   } else if (!searched.length && filtered.length) {
-    renderCountries = filtered
+    renderCountries = filtered;
   } else if (searched.length && !filtered.length) {
-    renderCountries = searched
+    renderCountries = searched;
   } else {
-    renderCountries = countries
+    renderCountries = countries;
   }
 
-  const renderCo =  renderCountries.map((item) => <Item key={item.numericCode} item={item}/>)
+  const renderCo = renderCountries.map((item) => (
+    <Item key={item.numericCode} item={item} />
+  ));
 
   return (
-    <>
-      {loading ? (
-        <p>Loading…</p>
-      ) : (
-        renderCo
-      )}
+    <div className={styles.items}>
+      {loading ? <p>Loading</p> : renderCo}
       {error && <p>{error.message}</p>}
-    </>
+    </div>
   );
 }
 

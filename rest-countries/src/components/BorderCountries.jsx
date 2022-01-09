@@ -10,6 +10,7 @@ function BoarderCountries({ borders }) {
 
   return (
     <>
+      {borders && <div>Border countries: </div>}
       {borders &&
         borders.map((borderCode) => (
           <Button key={borderCode}>

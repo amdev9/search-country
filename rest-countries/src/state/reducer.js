@@ -21,7 +21,7 @@ const reducer = (state, action) => {
     case FETCHING:
       return {
         ...state,
-        countries: null,
+        countries: [],
         loading: true,
         error: null,
       };

@@ -8,8 +8,11 @@ function SearchBar() {
   const [value, setValue] = useState("");
   const search = useCallback((val) => dispatch(actionSearch(val)), [dispatch]);
 
-  useEffect(() => { setValue(""); search(""); }, [search]);
-  
+  useEffect(() => {
+    setValue("");
+    search("");
+  }, [search]);
+
   const handleChange = (e) => {
     const searchString = e.target.value;
     setValue(searchString);

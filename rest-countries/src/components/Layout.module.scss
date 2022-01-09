@@ -1,0 +1,16 @@
+.container {
+  max-width: 1440px;
+  padding: 0 1rem;
+  margin: 3rem auto 6rem;
+}
+
+.logo {
+  font-weight: 800;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}

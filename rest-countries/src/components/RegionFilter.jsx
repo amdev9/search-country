@@ -23,7 +23,9 @@ function RegionFilter() {
   }, [filterAction]);
 
   const regions = useMemo(() => {
-    return [...new Set(state.countries.map((country) => country.region))].sort();
+    return [
+      ...new Set(state.countries.map((country) => country.region)),
+    ].sort();
   }, [state.countries]);
 
   const handleChange = (e) => {
