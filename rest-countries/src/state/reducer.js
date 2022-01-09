@@ -3,6 +3,7 @@ import {
   FETCHING,
   RESPONSE_COMPLETE,
   SEARCH_COUNTRIES,
+  FILTER_REGION,
 } from "./actions";
 
 const initialState = {
@@ -10,7 +11,8 @@ const initialState = {
   loading: false,
   error: null,
   value: "",
-  works: [],
+  searched: [],
+  filtered: [],
 };
 
 const reducer = (state, action) => {
@@ -24,10 +26,12 @@ const reducer = (state, action) => {
       };
 
     case RESPONSE_COMPLETE:
+      const countriesData = action.payload.result
       return {
         ...state,
-        countries: action.payload.result,
-        works: action.payload.result,
+        countries: countriesData,
+        filtered: countriesData,
+        seached: countriesData,
         loading: false,
         error: null,
       };
@@ -43,11 +47,23 @@ const reducer = (state, action) => {
     case SEARCH_COUNTRIES:
       const { payload: value } = action;
 
-      const works = state.countries.filter((country) =>
+      const searchedCountries = state.countries.filter((country) =>
         country.name.toLowerCase().includes(value)
       );
 
-      return { ...state, value, works };
+      return { ...state, value, searched: searchedCountries };
+
+    case FILTER_REGION:
+      const { payload } = action;
+
+      if (payload === "default") {
+        return { ...state, filtered: state.countries }
+      }
+      const filteredByRegion = state.countries.filter(
+        (country) => country.region === payload
+      );
+
+      return { ...state, filtered: filteredByRegion };
 
     default:
       return state;
