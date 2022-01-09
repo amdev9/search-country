@@ -10,17 +10,18 @@ function BoarderCountries({ borders }) {
 
   return (
     <>
-      {borders.map((borderCode) => (
-        <Button key={borderCode}>
-          <Link to={`/countries/${borderCode}`}>
-            {
-              countries.filter(
-                (country) => country.alpha3Code === borderCode
-              )[0].name
-            }
-          </Link>
-        </Button>
-      ))}
+      {borders &&
+        borders.map((borderCode) => (
+          <Button key={borderCode}>
+            <Link to={`/countries/${borderCode}`}>
+              {
+                countries.filter(
+                  (country) => country.alpha3Code === borderCode
+                )[0].name
+              }
+            </Link>
+          </Button>
+        ))}
     </>
   );
 }

@@ -12,15 +12,25 @@ function CountiesList() {
     [filtered, searched]
   );
 
+  let renderCountries = []
+  if (searched.length && filtered.length) {
+    renderCountries = countryUnion
+  } else if (!searched.length && filtered.length) {
+    renderCountries = filtered
+  } else if (searched.length && !filtered.length) {
+    renderCountries = searched
+  } else {
+    renderCountries = countries
+  }
+
+  const renderCo =  renderCountries.map((item) => <Item key={item.numericCode} item={item}/>)
+
   return (
     <>
       {loading ? (
         <p>Loading…</p>
       ) : (
-        (filtered.length === countries.length && searched.length === 0
-          ? countries
-          : countryUnion
-        ).map((item) => <Item key={item.numericCode} item={item} />)
+        renderCo
       )}
       {error && <p>{error.message}</p>}
     </>
