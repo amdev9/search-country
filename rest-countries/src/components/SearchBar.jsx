@@ -1,16 +1,23 @@
 
-import React, { useCallback, useContext } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import { store } from '../state/store.js';
 import { actionSearch } from '../state/actions';
 
 function SearchBar() {
-  const { value, dispatch } = useContext(store);
+  const { dispatch } = useContext(store);
+  const [value, setValue] = useState("");
   const search = useCallback((val) => dispatch(actionSearch(val)), [dispatch]);
+
+  const handleChange = (e) => {
+    const searchString = e.target.value;
+    setValue(searchString);
+    search(searchString);
+  };
 
   return (
     <input
       placeholder="Search countries"
-      onChange={(e) => search(e.target.value)}
+      onChange={handleChange}
       value={value}
     />
   );

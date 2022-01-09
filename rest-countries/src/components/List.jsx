@@ -5,7 +5,7 @@ import { store } from "../state/store";
 
 function CountiesList() {
   const { state } = useContext(store);
-  const { filtered, searched, loading, error } = state;
+  const { filtered, searched, countries, loading, error } = state;
 
   const countryUnion = useMemo(
     () => searched.filter((a) => filtered.some((b) => a.name === b.name)),
@@ -17,7 +17,10 @@ function CountiesList() {
       {loading ? (
         <p>Loading…</p>
       ) : (
-        countryUnion.map((item) => <Item key={item.numericCode} item={item} />)
+        (filtered.length === countries.length && searched.length === 0
+          ? countries
+          : countryUnion
+        ).map((item) => <Item key={item.numericCode} item={item} />)
       )}
       {error && <p>{error.message}</p>}
     </>

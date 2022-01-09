@@ -10,7 +10,7 @@ const initialState = {
   countries: [],
   loading: false,
   error: null,
-  value: "",
+  // value: "",
   searched: [],
   filtered: [],
 };
@@ -47,11 +47,15 @@ const reducer = (state, action) => {
     case SEARCH_COUNTRIES:
       const { payload: value } = action;
 
+      if (value === "") {
+        return { ...state, searched: state.countries }
+      }
+
       const searchedCountries = state.countries.filter((country) =>
         country.name.toLowerCase().includes(value)
       );
 
-      return { ...state, value, searched: searchedCountries };
+      return { ...state, searched: searchedCountries };
 
     case FILTER_REGION:
       const { payload } = action;
