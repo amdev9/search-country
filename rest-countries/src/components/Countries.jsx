@@ -2,6 +2,7 @@ import React from "react";
 import List from "./List";
 import SearchBar from "./SearchBar";
 import RegionFilter from "./RegionFilter";
+import ThemeSwitch from "./ThemeSwitch";
 import useFetch from "../common/useFetch";
 
 const Countries = () => {
@@ -13,6 +14,7 @@ const Countries = () => {
     <>
       <SearchBar />
       <RegionFilter />
+      <ThemeSwitch />
       <List />
     </>
   );

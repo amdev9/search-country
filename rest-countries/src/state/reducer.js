@@ -4,13 +4,14 @@ import {
   RESPONSE_COMPLETE,
   SEARCH_COUNTRIES,
   FILTER_REGION,
+  THEME_SWITCHER,
 } from "./actions";
 
 const initialState = {
   countries: [],
   loading: false,
   error: null,
-  // value: "",
+  themeDark: false, 
   searched: [],
   filtered: [],
 };
@@ -69,6 +70,11 @@ const reducer = (state, action) => {
 
       return { ...state, filtered: filteredByRegion };
 
+
+    case THEME_SWITCHER:
+      const { payload: themeBoolean } = action;
+      return { ...state, themeDark: themeBoolean };
+      
     default:
       return state;
   }
