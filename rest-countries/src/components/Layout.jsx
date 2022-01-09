@@ -4,7 +4,7 @@ import styles from "./Layout.module.scss";
 
 const Layout = (props) => {
   return (
-    <main>
+    <main className={styles.theme}>
       <header className={styles.header}>
         <div className={styles.logo}>Where in the world?</div>
         <ThemeSwitch />

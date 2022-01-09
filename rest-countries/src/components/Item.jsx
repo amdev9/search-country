@@ -12,9 +12,11 @@ const Item = (props) => {
 
         <div className={styles.info}>
           <span className={styles.name}>{item.name}</span>
-          <span>{item.population}</span>
-          <span>{item.region}</span>
-          <span>{item.capital}</span>
+
+          <span>Population: {item.population}</span>
+          <span>Region: {item.region}</span>          
+          <span>Capital: {item.capital}</span>
+
         </div>
       </Link>
     </div>
