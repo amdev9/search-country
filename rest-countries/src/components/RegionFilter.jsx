@@ -5,22 +5,24 @@ import React, {
   useMemo,
   useState,
 } from "react";
+import Select from "react-select";
 import { store } from "../state/store.js";
 import { actionFilter } from "../state/actions";
+import styles from "./RegionFilter.module.scss"
 
 function RegionFilter() {
   const { state, dispatch } = useContext(store);
-  const [value, setValue] = useState("default");
+  const [selectedOption, setSelectedOption] = useState(null);
 
   const filterAction = useCallback(
     (val) => dispatch(actionFilter(val)),
     [dispatch]
   );
 
-  useEffect(() => {
-    setValue("default");
-    filterAction();
-  }, [filterAction]);
+  // useEffect(() => {
+  //   setSelectedOption(null);
+  //   filterAction();
+  // }, []);
 
   const regions = useMemo(() => {
     return [
@@ -29,21 +31,27 @@ function RegionFilter() {
   }, [state.countries]);
 
   const handleChange = (e) => {
-    const pickedRegion = e.target.value;
+    const pickedRegion = e.value;
 
-    setValue(pickedRegion);
+    setSelectedOption(pickedRegion);
     filterAction(pickedRegion);
   };
 
+  const options = regions.map((region) => {
+    return { value: region, label: region };
+  });
+
   return (
-    <select onChange={handleChange} value={value}>
-      <option value="default">Filter by region</option>
-      {regions.map((region) => (
-        <option key={region} value={region}>
-          {region}
-        </option>
-      ))}
-    </select>
+    <Select
+      className={styles.select}
+      isSearchable={false}
+      placeholder={"Filter by region"}
+      onChange={handleChange}
+      options={options}
+      value={options.filter(function (option) {
+        return option.value === selectedOption;
+      })}
+    />
   );
 }
 

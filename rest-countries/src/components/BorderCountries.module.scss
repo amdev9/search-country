@@ -1,0 +1,35 @@
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  
+  align-items: flex-start;
+  margin-top: 2rem;
+}
+
+.label {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.items {
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+
+@media screen and (min-width: 600px) {
+  .wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+    // font-size: 14px;
+    // display: flex;
+    // flex-direction: column;
+  } 
+  .items {
+    margin-top: 0;
+    margin-left: 1rem;
+  }
+}

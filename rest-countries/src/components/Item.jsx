@@ -7,15 +7,16 @@ const Item = (props) => {
 
   return (
     <div className={styles.item}>
-      <Link className={styles.link} to={`/countries/${item.alpha3Code}`}>
-        <img src={item.flags.png} alt={item.name} />
 
-        <div className={styles.info}>
-          <span className={styles.name}>{item.name}</span>
+      <Link  to={`/countries/${item.alpha3Code}`}>
+        <img className={styles.item__img} src={item.flags.png} alt={item.name} />
 
-          <span>Population: {item.population}</span>
-          <span>Region: {item.region}</span>          
-          <span>Capital: {item.capital}</span>
+        <div className={styles.item__info}>
+          <span className={styles.item__name}>{item.name}</span>
+
+          <span><b>Population: </b> {item.population}</span>
+          <span><b>Region: </b>{item.region}</span>          
+          <span><b>Capital: </b>{item.capital}</span>
 
         </div>
       </Link>

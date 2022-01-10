@@ -2,8 +2,11 @@
 
 .container {
   max-width: 1440px;
-  padding: 0 1rem;
+  // padding: 0 1rem;
   margin: 3rem auto 6rem;
+
+  // margin: 2rem;
+ 
 }
 
 .logo {
@@ -11,8 +14,32 @@
 }
 
 .header {
+  
+  height: 5rem;
+  padding: 0 1.3rem 0 1.3rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  
+  background-color: $white;
+  box-shadow: 0 0 3px 3px $dark-gray-trans;
 }
+
+
+@media screen and (min-width: 600px) {
+
+  .header {
+    padding: 0 3rem 0 3rem;
+    // margin: 3rem;
+    // display: flex;
+    // justify-content: space-between;
+    // align-items: center;
+    // gap: 1rem;
+  }
+
+
+ 
+}
+
+
+ 

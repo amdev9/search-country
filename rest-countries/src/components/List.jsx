@@ -23,9 +23,9 @@ function CountiesList() {
     renderCountries = countries;
   }
 
-  const renderCo = renderCountries.map((item) => (
+  const renderCo = renderCountries.length ? renderCountries.map((item) => (
     <Item key={item.numericCode} item={item} />
-  ));
+  )) : "Not found"
 
   return (
     <div className={styles.items}>

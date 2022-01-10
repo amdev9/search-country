@@ -18,25 +18,53 @@ const Country = () => {
 
   return (
     <Layout>
-      <Button onClick={() => history.goBack()}>Back</Button>
-      <div>
-        <img src={item.flags.png} alt={item.name} />
+      <div className={styles.back}>
+        <Button onClick={() => history.goBack()}>Back</Button>
+      </div>
+      <div className={styles.wrapper}>
+        <img className={styles.img} src={item.flags.png} alt={item.name} />
 
         <div className={styles.info}>
           <span className={styles.name}>{item.name}</span>
-          <span>Native Name: {item.nativeName}</span>
-          <span>Population: {item.population}</span>
-          <span>Region: {item.region}</span>
-          <span>Sub Region: {item.subregion}</span>
-          <span>Capital: {item.capital}</span>
-
-          <span>Top Level Domain: {item.topLevelDomain}</span>
-          <span>Currencies: {item.currencies.map(curr => curr.name).join(', ')}</span>
-          <span>Languages: {item.languages.map(lang => lang.name).join(', ')}</span>
-
+          {/* TODO: use keys transformation as labels */}
+          <div className={styles.info__basic}>
+            <span>
+              <b>Native Name: </b>
+              {item.nativeName}
+            </span>
+            <span>
+              <b>Population: </b> {item.population}
+            </span>
+            <span>
+              <b>Region: </b>
+              {item.region}
+            </span>
+            <span>
+              <b>Sub Region: </b>
+              {item.subregion}
+            </span>
+            <span>
+              <b>Capital: </b>
+              {item.capital}
+            </span>
+          </div>
+          <div className={styles.info__additional}>
+            <span>
+              <b>Top Level Domain: </b>
+              {item.topLevelDomain}
+            </span>
+            <span>
+              <b>Currencies: </b>
+              {item.currencies.map((curr) => curr.name).join(", ")}
+            </span>
+            <span>
+              <b>Languages: </b>
+              {item.languages.map((lang) => lang.name).join(", ")}
+            </span>
+          </div>
+          <BorderCountries borders={item.borders} />
         </div>
       </div>
-      <BorderCountries borders={item.borders} />
     </Layout>
   );
 };
