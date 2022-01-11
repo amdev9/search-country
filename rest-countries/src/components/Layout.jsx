@@ -1,6 +1,5 @@
 import React from "react";
-// import ThemeSwitch from "./ThemeSwitch";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 import styles from "./Layout.module.scss";
 
 const Layout = (props) => {

@@ -3,7 +3,6 @@ import {
   FETCHING,
   RESPONSE_COMPLETE,
   CONDITION,
-  // THEME_SWITCHER,
 } from "./actions";
 
 const initialState = {
@@ -17,11 +16,6 @@ const initialState = {
 };
 
 const reducer = (state, action) => {
-  // // all logic to reducer
-  // const countryIntersect = useMemo(
-  //   () => searched.filter((a) => filtered.some((b) => a.name === b.name)),
-  //   [filtered, searched]
-  // );
 
   switch (action.type) {
     case FETCHING:
