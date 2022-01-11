@@ -34,7 +34,7 @@
   }
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: $mobile) {
   .item {
     &__img {
       width: 20rem;

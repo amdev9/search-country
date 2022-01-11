@@ -1,3 +1,5 @@
+@import "../variables.scss";
+
 .items {
   margin: 4rem;
   display: grid;
@@ -5,7 +7,7 @@
   grid-template-columns: 1fr;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: $mobile) {
   .items {
     grid-template-columns: repeat(auto-fit, minmax(15rem, 17rem));
     justify-content: space-around;

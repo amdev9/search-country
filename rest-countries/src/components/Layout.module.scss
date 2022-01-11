@@ -22,7 +22,7 @@
   box-shadow: $small-shadow;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: $mobile) {
   .header {
     padding: 0 4rem 0 4rem;
   }

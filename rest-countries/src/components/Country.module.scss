@@ -1,3 +1,5 @@
+@import "../variables.scss";
+
 .wrapper {
   font-size: 14px;
   margin-top: 4rem;
@@ -31,7 +33,7 @@
   }
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: $mobile) {
   .wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -48,5 +50,6 @@
   .img {
     width: 100%;
     height: 100%;
+    object-fit: fill;
   }
 }

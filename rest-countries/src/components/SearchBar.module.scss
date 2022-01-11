@@ -10,7 +10,7 @@
   border: none;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: $mobile) {
   .search {
     grid-column: 1/2;
   }

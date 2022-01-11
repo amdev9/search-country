@@ -1,14 +1,15 @@
+@import "../variables.scss";
+
 .conditions {
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 2rem;
-  
-  
+
   justify-content: center;
   margin: 2rem;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: $mobile) {
   .conditions {
     grid-template-columns: repeat(3, 1fr);
     margin: 4rem;

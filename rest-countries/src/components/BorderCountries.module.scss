@@ -1,8 +1,9 @@
+@import "../variables.scss";
 
 .wrapper {
   display: flex;
   flex-direction: column;
-  
+
   align-items: flex-start;
   margin-top: 2rem;
 }
@@ -17,14 +18,13 @@
   margin-top: 1rem;
 }
 
-
-@media screen and (min-width: 600px) {
+@media screen and (min-width: $mobile) {
   .wrapper {
     display: flex;
     flex-direction: row;
     align-items: center;
-  } 
-  
+  }
+
   .items {
     margin-top: 0;
     margin-left: 1rem;
