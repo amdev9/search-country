@@ -7,20 +7,20 @@ function CountiesList() {
   const { state } = useContext(store);
   const { filtered, searched, countries, loading, error } = state;
 
-  const countryUnion = useMemo(
+  const countryIntersect = useMemo(
     () => searched.filter((a) => filtered.some((b) => a.name === b.name)),
     [filtered, searched]
   );
 
-  let renderCountries = [];
+  let renderCountries = countries;
   if (searched.length && filtered.length) {
-    renderCountries = countryUnion;
+    renderCountries = countryIntersect;
   } else if (!searched.length && filtered.length) {
     renderCountries = filtered;
   } else if (searched.length && !filtered.length) {
     renderCountries = searched;
   } else {
-    renderCountries = countries;
+    renderCountries = [];
   }
 
   const renderCo = renderCountries.length ? renderCountries.map((item) => (

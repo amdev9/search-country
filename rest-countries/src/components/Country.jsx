@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import { useParams, useHistory } from "react-router-dom";
-import { store } from "../state/store.js";
 
 import Button from "./UI/Button";
 import BorderCountries from "./BorderCountries";
 import Layout from "./Layout";
+import { store } from "../state/store.js";
+import { apiKeyToLabel } from "../common/helpers";
 import styles from "./Country.module.scss";
 
 const Country = () => {
@@ -28,27 +29,21 @@ const Country = () => {
 
           <div className={styles.info}>
             <span className={styles.name}>{item.name}</span>
-            {/* TODO: use keys transformation as labels */}
             <div className={styles.info__basic}>
-              <span>
-                <b>Native Name: </b>
-                {item.nativeName}
-              </span>
-              <span>
-                <b>Population: </b> {item.population}
-              </span>
-              <span>
-                <b>Region: </b>
-                {item.region}
-              </span>
-              <span>
-                <b>Sub Region: </b>
-                {item.subregion}
-              </span>
-              <span>
-                <b>Capital: </b>
-                {item.capital}
-              </span>
+              {[
+                "nativeName",
+                "population",
+                "region",
+                "subregion",
+                "capital",
+              ].map(
+                (val) =>
+                  item[val] && (
+                    <span>
+                      <b>{apiKeyToLabel(val)}: </b> {item[val]}
+                    </span>
+                  )
+              )}
             </div>
             <div className={styles.info__additional}>
               <span>
