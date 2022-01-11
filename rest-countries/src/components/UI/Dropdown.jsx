@@ -124,6 +124,7 @@ class Dropdown extends Component {
     const { listItem } = styles;
     const { keyword, list } = this.state;
     let tempList = [...list];
+    const selectedItemValue = this.state.selectedItem?.value;
 
     if (keyword.length) {
       tempList = list.filter((item) =>
@@ -141,6 +142,11 @@ class Dropdown extends Component {
           onClick={() => this.selectItem(item)}
         >
           {item.label}{" "}
+          {item.value === selectedItemValue && (
+            <span style={styles.checkIcon}>
+              {/* {checkIcon || <Check />} */}
+            </span>
+          )}
         </button>
       ));
     }

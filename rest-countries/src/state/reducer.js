@@ -2,9 +2,8 @@ import {
   ERROR,
   FETCHING,
   RESPONSE_COMPLETE,
-  SEARCH_COUNTRIES,
-  FILTER_REGION,
-  THEME_SWITCHER,
+  CONDITION,
+  // THEME_SWITCHER,
 } from "./actions";
 
 const initialState = {
@@ -12,11 +11,18 @@ const initialState = {
   loading: false,
   error: null,
   themeDark: false,
-  searched: [],
-  filtered: [],
+  renderCountries: [],
+  searchValue: "",
+  filterRegion: null,
 };
 
 const reducer = (state, action) => {
+  // // all logic to reducer
+  // const countryIntersect = useMemo(
+  //   () => searched.filter((a) => filtered.some((b) => a.name === b.name)),
+  //   [filtered, searched]
+  // );
+
   switch (action.type) {
     case FETCHING:
       return {
@@ -31,6 +37,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         countries: countriesData,
+        renderCountries: countriesData,
         loading: false,
         error: null,
       };
@@ -43,27 +50,67 @@ const reducer = (state, action) => {
         error: action.payload.error,
       };
 
-    case SEARCH_COUNTRIES:
-      const { payload: value } = action;
+    case CONDITION: // filter, search parametrization
+      const { payload, meta } = action;
 
-      const searchedCountries = state.countries.filter((country) =>
-        country.name.toLowerCase().includes(value)
-      );
+      if (meta === "filter") {
+        const filteredByRegion = state.countries.filter(
+          (country) => country.region === payload
+        );
 
-      return { ...state, searched: searchedCountries };
+        if (state.searchValue) {
+          const searchedCountries = state.countries.filter((country) =>
+            country.name.toLowerCase().includes(state.searchValue)
+          );
 
-    case FILTER_REGION:
-      const { payload } = action;
+          const renderCountries = searchedCountries.filter((a) =>
+            filteredByRegion.some((b) => a.name === b.name)
+          );
 
-      const filteredByRegion = state.countries.filter(
-        (country) => country.region === payload
-      );
+          return {
+            ...state,
+            filterRegion: payload,
+            renderCountries,
+          };
+        }
 
-      return { ...state, filtered: filteredByRegion };
+        return {
+          ...state,
+          filterRegion: payload,
+          renderCountries: filteredByRegion,
+        };
+      } else {
+        const searchedCountries = state.countries.filter((country) =>
+          country.name.toLowerCase().includes(payload)
+        );
 
-    case THEME_SWITCHER:
-      const { payload: themeBoolean } = action;
-      return { ...state, themeDark: themeBoolean };
+        if (payload) {
+          if (state.filterRegion) {
+            const filteredByRegion = state.countries.filter(
+              (country) => country.region === state.filterRegion
+            );
+
+            const renderCountries = filteredByRegion.filter((a) =>
+              searchedCountries.some((b) => a.name === b.name)
+            );
+
+            return {
+              ...state,
+              searchValue: payload,
+              renderCountries,
+            };
+          }
+          return {
+            ...state,
+            searchValue: payload,
+            renderCountries: searchedCountries,
+          };
+        }
+      }
+      return state;
+    // case THEME_SWITCHER:
+    //   const { payload: themeBoolean } = action;
+    //   return { ...state, themeDark: themeBoolean };
 
     default:
       return state;

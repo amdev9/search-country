@@ -37,8 +37,6 @@
 @media screen and (min-width: $mobile) {
   .item {
     &__img {
-      width: 20rem;
-      height: 10rem;
       object-fit: cover;
     }
   }

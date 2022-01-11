@@ -20,7 +20,7 @@ const Item = (props) => {
           {["population", "region", "capital"].map(
             (val) =>
               item[val] && (
-                <span>
+                <span key={val}>
                   <b>{apiKeyToLabel(val)}: </b> {item[val]}
                 </span>
               )

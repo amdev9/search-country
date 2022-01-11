@@ -39,7 +39,7 @@ const Country = () => {
               ].map(
                 (val) =>
                   item[val] && (
-                    <span>
+                    <span key={val}>
                       <b>{apiKeyToLabel(val)}: </b> {item[val]}
                     </span>
                   )

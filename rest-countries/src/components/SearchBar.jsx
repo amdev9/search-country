@@ -4,14 +4,9 @@ import { actionSearch } from "../state/actions";
 import styles from "./SearchBar.module.scss"
 
 function SearchBar() {
-  const { dispatch } = useContext(store);
-  const [value, setValue] = useState("");
-  const search = useCallback((val) => dispatch(actionSearch(val)), [dispatch]);
-
-  // useEffect(() => {
-  //   setValue("");
-  //   search("");
-  // }, []);
+  const { dispatch, state: { searchValue } } = useContext(store);
+  const [value, setValue] = useState(searchValue);
+  const search = useCallback((val) => dispatch(actionSearch('search', val)), [dispatch]);
 
   const handleChange = (e) => {
     const searchString = e.target.value;
