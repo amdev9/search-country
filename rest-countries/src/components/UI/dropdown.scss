@@ -18,6 +18,10 @@
     box-shadow: 0 0 10px 10px $dark-gray-trans;
     background-color: $white;
     width: 100%;
+    
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 
     padding: 1.5rem 2rem;
 
@@ -55,13 +59,12 @@
       .dd-list-item {
         display: inline-block;
         overflow: hidden;
-        width: 100%;
-
-        padding: 0.5rem 2rem;
-
-        line-height: 1.6rem;
         white-space: nowrap;
         text-overflow: ellipsis;
+        width: 100%;
+        padding: 0.5rem 2rem;
+        line-height: 1.6rem;
+        
         cursor: default;
         cursor: pointer;
 

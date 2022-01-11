@@ -4,10 +4,16 @@
   font-size: 16px;
   box-shadow: $shadow;
 
-  padding: 1.5rem 2rem;
+  padding: 1.5rem 4rem;
   border-radius: $radius;
   background-color: $white;
   border: none;
+
+
+  background: url("./UI/assets/search.svg") no-repeat scroll 1.5rem 1.3rem;
+  background-size: 1.5rem;
+
+  
 }
 
 @media screen and (min-width: $mobile) {
