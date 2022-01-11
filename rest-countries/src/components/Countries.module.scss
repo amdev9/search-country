@@ -1,20 +1,17 @@
-.filter {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin: 1.3rem;
+.conditions {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 2rem;
+  
+  
+  justify-content: center;
+  margin: 2rem;
 }
 
 @media screen and (min-width: 600px) {
-  .filter {
-    display: flex;
-    flex-direction: row;
-
-    // font-size: 14px;
-    // display: flex;
-    // flex-direction: column;
+  .conditions {
+    grid-template-columns: repeat(3, 1fr);
+    margin: 4rem;
+    grid-gap: 4rem;
   }
-
-
-  
 }

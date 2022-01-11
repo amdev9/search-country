@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { store } from "../state/store.js";
-import BorderCountries from "./BorderCountries.jsx";
-import Button from "./Button.jsx";
+
+import Button from './UI/Button';
+import BorderCountries from "./BorderCountries";
 import Layout from "./Layout";
 import styles from "./Country.module.scss";
 

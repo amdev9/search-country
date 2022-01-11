@@ -5,13 +5,13 @@
   box-shadow: $shadow;
 
   padding: 1.5rem 2rem;
-  border-radius: 0.2rem;
-  background-color: rgb(255, 255, 255);
+  border-radius: $radius;
+  background-color: $white;
   border: none;
 }
 
 @media screen and (min-width: 600px) {
   .search {
-    width: 30%;
+    grid-column: 1/2;
   }
 }

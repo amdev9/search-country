@@ -1,18 +1,18 @@
 import React, {
   useCallback,
   useContext,
-  useEffect,
+  // useEffect,
   useMemo,
-  useState,
+  // useState,
 } from "react";
-import Select from "react-select";
+
 import { store } from "../state/store.js";
 import { actionFilter } from "../state/actions";
-import styles from "./RegionFilter.module.scss"
+import Dropdown from "./UI/Dropdown";
+import styles from "./RegionFilter.module.scss";
 
 function RegionFilter() {
   const { state, dispatch } = useContext(store);
-  const [selectedOption, setSelectedOption] = useState(null);
 
   const filterAction = useCallback(
     (val) => dispatch(actionFilter(val)),
@@ -32,8 +32,6 @@ function RegionFilter() {
 
   const handleChange = (e) => {
     const pickedRegion = e.value;
-
-    setSelectedOption(pickedRegion);
     filterAction(pickedRegion);
   };
 
@@ -42,16 +40,14 @@ function RegionFilter() {
   });
 
   return (
-    <Select
-      className={styles.select}
-      isSearchable={false}
-      placeholder={"Filter by region"}
-      onChange={handleChange}
-      options={options}
-      value={options.filter(function (option) {
-        return option.value === selectedOption;
-      })}
-    />
+    <div className={styles.filter}>
+      <Dropdown
+        name="region"
+        title="Filter by region"
+        list={options}
+        onChange={handleChange}
+      />
+    </div>
   );
 }
 

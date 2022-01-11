@@ -5,7 +5,7 @@ import styles from "./Layout.module.scss";
 
 const Layout = (props) => {
   return (
-    <main className={styles.theme}>
+    <main className={styles.main}>
       <header className={styles.header}>
         <div className={styles.logo}>
           <Link to={`/`}>Where in the world?</Link>

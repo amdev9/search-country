@@ -1,17 +1,16 @@
-@import "../variables.scss";
+@import "../../variables.scss";
 
 .btn {
   width: 80px;
   margin: 5px;
   height: 30px;
-  // font-size: 14px;
   
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
   background: $white;
   border-radius: 2px;
-  box-shadow: 0 0 3px 3px $dark-gray-trans;;
+  box-shadow: $small-shadow;
   border: none;
   cursor: pointer;
 }
