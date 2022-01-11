@@ -1,7 +1,6 @@
 .wrapper {
   font-size: 14px;
-  display: flex;
-  flex-direction: column;
+  margin-top: 4rem;
 }
 
 .name {
@@ -9,19 +8,14 @@
   font-weight: 800;
 }
 
-.img {
+.container {
   margin: 2rem;
-}
-
-.back {
-  margin-top: 4rem;
-  margin-bottom: 4rem;
 }
 
 .info {
   display: flex;
   flex-direction: column;
-  margin: 2rem;
+  margin: 2rem 0 0 0;
 
   &__basic {
     display: flex;
@@ -37,22 +31,22 @@
   }
 }
 
-.back {
-  margin: 2rem;
-}
-
 @media screen and (min-width: 600px) {
   .wrapper {
-    display: flex;
-    flex-direction: row;
-  
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 4rem;
+  }
+
+  .info {
+    margin: 2rem;
+  }
+
+  .container {
+    margin: 4rem;
   }
   .img {
-    margin: 0;
-    
-  }
-  .back {
-    margin: 4rem 0 4rem 0 ;
+    width: 100%;
+    height: 100%;
   }
 }
