@@ -6,6 +6,7 @@ import BorderCountries from "./BorderCountries";
 import Layout from "./Layout";
 import { store } from "../state/store.js";
 import { apiKeyToLabel } from "../common/helpers";
+import useFetch from "../common/useFetch";
 import styles from "./Country.module.scss";
 
 const Country = () => {
@@ -18,6 +19,8 @@ const Country = () => {
     (country) => country.alpha3Code === params.id
   )[0];
 
+  useFetch(`https://restcountries.com/v2/alpha/${params.id}`);
+
   return (
     <Layout>
       <div className={styles.container}>
@@ -25,7 +28,7 @@ const Country = () => {
           <Button onClick={() => history.goBack()}>Back</Button>
         </div>
         <div className={styles.wrapper}>
-          <img className={styles.img} src={item.flags.png} alt={item.name} />
+          <img className={styles.img} src={item.flags && item.flags.png} alt={item.name} />
 
           <div className={styles.info}>
             <span className={styles.name}>{item.name}</span>
@@ -52,11 +55,11 @@ const Country = () => {
               </span>
               <span>
                 <b>Currencies: </b>
-                {item.currencies.map((curr) => curr.name).join(", ")}
+                {item.currencies && item.currencies.map((curr) => curr.name).join(", ")}
               </span>
               <span>
                 <b>Languages: </b>
-                {item.languages.map((lang) => lang.name).join(", ")}
+                {item.languages && item.languages.map((lang) => lang.name).join(", ")}
               </span>
             </div>
             <BorderCountries borders={item.borders} />
