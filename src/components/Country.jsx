@@ -12,14 +12,26 @@ import styles from "./Country.module.scss";
 const Country = () => {
   const params = useParams();
   const history = useHistory();
+
+  useFetch(`https://restcountries.com/v2/all`);
+
   const {
     state: { countries },
   } = useContext(store);
+
   const item = countries.filter(
     (country) => country.alpha3Code === params.id
   )[0];
 
-  useFetch(`https://restcountries.com/v2/alpha/${params.id}`);
+  if (!countries.length) {
+    return (
+      <Layout>
+        <div className={styles.container}>
+          <p>Loading</p>
+        </div>
+      </Layout>
+    );
+  }
 
   return (
     <Layout>
@@ -28,7 +40,11 @@ const Country = () => {
           <Button onClick={() => history.goBack()}>Back</Button>
         </div>
         <div className={styles.wrapper}>
-          <img className={styles.img} src={item.flags && item.flags.png} alt={item.name} />
+          <img
+            className={styles.img}
+            src={item.flags && item.flags.png}
+            alt={item.name}
+          />
 
           <div className={styles.info}>
             <span className={styles.name}>{item.name}</span>
@@ -55,11 +71,13 @@ const Country = () => {
               </span>
               <span>
                 <b>Currencies: </b>
-                {item.currencies && item.currencies.map((curr) => curr.name).join(", ")}
+                {item.currencies &&
+                  item.currencies.map((curr) => curr.name).join(", ")}
               </span>
               <span>
                 <b>Languages: </b>
-                {item.languages && item.languages.map((lang) => lang.name).join(", ")}
+                {item.languages &&
+                  item.languages.map((lang) => lang.name).join(", ")}
               </span>
             </div>
             <BorderCountries borders={item.borders} />

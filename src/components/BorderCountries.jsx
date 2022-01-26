@@ -5,17 +5,17 @@ import { store } from "../state/store.js";
 import styles from "./BorderCountries.module.scss";
 
 function BoarderCountries({ borders }) {
+  
   const {
     state: { countries },
   } = useContext(store);
 
+  const linkCountry = (code) => countries.filter((country) => country.alpha3Code === code)[0].name
+
   const countryButton = (borderCode) => (
     <Button key={borderCode}>
       <Link to={`/countries/${borderCode}`}>
-        {
-          countries.filter((country) => country.alpha3Code === borderCode)[0]
-            .name
-        }
+        { linkCountry(borderCode) }
       </Link>
     </Button>
   );

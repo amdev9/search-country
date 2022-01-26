@@ -8,7 +8,7 @@ const useFetch = (url) => {
     state: { countries },
   } = useContext(store);
 
-  useEffect(() => {
+  useEffect(() => {    
     if (countries.length > 0) {
       return;
     }
@@ -20,7 +20,7 @@ const useFetch = (url) => {
         const response = await fetch(url);
 
         const data = await response.json();
-
+        
         dispatch({ type: RESPONSE_COMPLETE, payload: { result: data } });
       } catch (error) {
         dispatch({ type: ERROR, payload: { error } });
@@ -28,7 +28,7 @@ const useFetch = (url) => {
     };
 
     fetchUrl();
-  }, [url, dispatch, countries.length]);
+  }, []); 
 };
 
 export default useFetch;
