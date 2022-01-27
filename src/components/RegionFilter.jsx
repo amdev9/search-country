@@ -1,5 +1,4 @@
 import React, {
-  useCallback,
   useContext,
   useEffect,
   useRef,
@@ -14,10 +13,7 @@ function RegionFilter() {
   const { state, dispatch } = useContext(store);
   const dropdownRef = useRef(null);
 
-  const filterAction = useCallback(
-    (val) => dispatch(actionSearch('filter', val)),
-    [dispatch]
-  );
+  const filterAction = (val) => dispatch(actionSearch('filter', val));
 
   useEffect(() => {
     state.filterRegion && dropdownRef.current.selectSingleItem({ value: state.filterRegion });
