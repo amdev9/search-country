@@ -6,7 +6,7 @@ import styles from "./SearchBar.module.scss"
 function SearchBar() {
   const { dispatch, state: { searchValue } } = useContext(store);
   const [value, setValue] = useState(searchValue);
-  const search = useCallback((val) => dispatch(actionSearch('search', val)), [dispatch]);
+  const search = (val) => dispatch(actionSearch('search', val));
 
   const handleChange = (e) => {
     const searchString = e.target.value;

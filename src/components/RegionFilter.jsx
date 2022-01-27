@@ -2,7 +2,6 @@ import React, {
   useCallback,
   useContext,
   useEffect,
-  useMemo,
   useRef,
 } from "react";
 
@@ -24,11 +23,11 @@ function RegionFilter() {
     state.filterRegion && dropdownRef.current.selectSingleItem({ value: state.filterRegion });
   }, [state.filterRegion])
 
-  const regions = useMemo(() => {
+  const regions = () => {
     return [
       ...new Set(state.countries.map((country) => country.region)),
     ].sort();
-  }, [state.countries]);
+  };
 
   const handleChange = (e) => {
     const pickedRegion = e.value;
